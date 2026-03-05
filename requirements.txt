@@ -1,4 +1,7 @@
+customtkinter
 moviepy==1.0.3
 edge-tts
 openai-whisper
 yt-dlp
+google-generativeai
+python-dotenv

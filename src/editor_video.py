@@ -11,9 +11,7 @@ change_settings({"IMAGEMAGICK_BINARY": caminho_magick})
 
 from moviepy.editor import VideoFileClip, AudioFileClip, TextClip, CompositeVideoClip
 
-def montar_video(caminho_fundo, caminho_audio, legendas, caminho_saida):
-    print("A iniciar a montagem do vídeo final...")
-    
+def montar_video(caminho_fundo, caminho_audio, legendas, caminho_saida, cor_legenda="Amarelo"):
     video_fundo = VideoFileClip(caminho_fundo)
     audio_fala = AudioFileClip(caminho_audio)
     
@@ -21,17 +19,23 @@ def montar_video(caminho_fundo, caminho_audio, legendas, caminho_saida):
     video_fundo = video_fundo.set_audio(audio_fala)
     
     video_fundo = video_fundo.resize(height=1920)
-    
     video_fundo = vfx.crop(video_fundo, width=1080, height=1920, x_center=video_fundo.w/2, y_center=video_fundo.h/2)
     
     clipes_tela = [video_fundo]
     
-    print("A gerar e posicionar as legendas...")
+    cores = {
+        "Amarelo": "yellow",
+        "Branco": "white",
+        "Verde": "#00FF00", 
+        "Vermelho": "red"
+    }
+    cor_oficial = cores.get(cor_legenda, "yellow")
+    
     for leg in legendas:
         txt_clip = TextClip(
             leg["texto"], 
             fontsize=110, 
-            color='yellow', 
+            color=cor_oficial, 
             font='Arial-Bold', 
             stroke_color='black', 
             stroke_width=4,
@@ -41,8 +45,6 @@ def montar_video(caminho_fundo, caminho_audio, legendas, caminho_saida):
         clipes_tela.append(txt_clip)
     
     video_final = CompositeVideoClip(clipes_tela)
-    
-    print(f"A renderizar o vídeo final (Aguarde a barra chegar a 100%)...")
     
     video_final.write_videofile(
         caminho_saida, 

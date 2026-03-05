@@ -2,19 +2,20 @@
 
 ![Python Version](https://img.shields.io/badge/Python-3.10%2B-blue?logo=python&logoColor=white)
 ![CustomTkinter](https://img.shields.io/badge/GUI-CustomTkinter-darkblue)
-![AI](https://img.shields.io/badge/AI-Whisper_&_EdgeTTS-green)
+![AI](https://img.shields.io/badge/AI-Whisper_&_Gemini_&_EdgeTTS-green)
 
-O PyShorts Studio é uma aplicação completa em Python que automatiza a criação de vídeos curtos (Shorts, Reels, TikToks). Com apenas um clique, o software baixa um vídeo de fundo, gera a narração com Inteligência Artificial, sincroniza as palavras e renderiza o vídeo final em formato vertical com legendas animadas.
+O PyShorts Studio é uma aplicação completa em Python que automatiza a criação de vídeos curtos (Shorts, Reels, TikToks). Com apenas alguns cliques, o software gera guiões com Inteligência Artificial, cria a narração, baixa um vídeo de fundo, sincroniza as legendas e renderiza o vídeo final em formato vertical.
 
 ---
 
 ## Funcionalidades
 
-- Download Automático: Baixa vídeos de fundo do YouTube em alta qualidade.
-- Voz com IA: Transforma qualquer texto numa narração realista usando `edge-tts`.
-- Legendas Inteligentes: Usa a IA da OpenAI (`Whisper`) para ouvir o áudio e sincronizar cada palavra com precisão de milissegundos.
+- Gerador de Guiões com IA: Integração com a API do Google Gemini para criar textos virais a partir de um único tema.
+- Download Automático: Baixa vídeos de fundo do YouTube em alta qualidade via `yt-dlp`.
+- Vozes Personalizáveis: Transforma o texto numa narração realista (várias opções de vozes em PT-BR e PT-PT) usando `edge-tts`.
+- Legendas Inteligentes: Usa a IA da OpenAI (`Whisper`) para sincronizar cada palavra, com a possibilidade de escolher a cor da legenda.
 - Formato TikTok/Shorts: Corta e redimensiona o vídeo automaticamente para a proporção 9:16 (1080x1920).
-- Interface Moderna: GUI em Dark Mode construída com `CustomTkinter`, rodando processos em segundo plano para não "congelar" a janela.
+- Gestor de Biblioteca: Interface em Dark Mode construída com `CustomTkinter` que permite gerir, abrir e apagar os vídeos já criados.
 
 ---
 
@@ -26,7 +27,7 @@ Antes de rodares o projeto, precisas de instalar o ImageMagick (essencial para o
 2. Durante a instalação, marca a caixa "Install legacy utilities (e.g. convert)".
 3. Confirma se o caminho `C:\Program Files\ImageMagick-7.1.2-Q16-HDRI\magick.exe` (ou a tua versão específica) está correto no ficheiro `src/editor_video.py`.
 
-### 2. Configurar o Ambiente
+### 2. Configurar o Ambiente Virtual
 Clona este repositório e cria um ambiente virtual (recomendado na raiz do Disco C: para evitar bugs de sincronização com o OneDrive):
 
 ```powershell

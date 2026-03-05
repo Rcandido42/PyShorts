@@ -1,12 +1,14 @@
-import asyncio
 import edge_tts
 
-VOZ = "pt-BR-AntonioNeural"
-
-async def gerar_audio(texto, caminho_saida):
-    print(f"A gerar áudio para: '{texto[:40]}...'")
+async def gerar_audio(texto, caminho_saida, voz_escolhida="Masculino (PT-BR)"):
+    vozes = {
+        "Masculino (PT-BR)": "pt-BR-AntonioNeural",
+        "Feminina (PT-BR)": "pt-BR-FranciscaNeural",
+        "Masculino (PT-PT)": "pt-PT-DuarteNeural",
+        "Feminina (PT-PT)": "pt-PT-RaquelNeural"
+    }
     
-    comunicacao = edge_tts.Communicate(texto, VOZ)
-    await comunicacao.save(caminho_saida)
+    voz_oficial = vozes.get(voz_escolhida, "pt-BR-AntonioNeural")
     
-    print(f"Áudio salvo com sucesso em: {caminho_saida}")
+    communicate = edge_tts.Communicate(texto, voz_oficial)
+    await communicate.save(caminho_saida)
