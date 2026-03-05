@@ -8,7 +8,7 @@ from src.baixar_video import baixar_fundo_youtube
 async def main():
     os.makedirs("assets/output", exist_ok=True)
 
-    texto_do_video = "Fala mano! O nosso projeto PyShorts está finalmente concluído e cem por cento automático. Agora é só rodar o script, pegar o café, e ver a magia acontecer direto no terminal!"
+    texto_do_video = "Deu certo"
     link_youtube = "https://www.youtube.com/watch?v=aqz-KE-bpKQ"
     
     arquivo_audio = "assets/audio_teste.mp3"
